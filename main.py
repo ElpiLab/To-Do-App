@@ -54,13 +54,14 @@ def add_task(tasks_list):
 
     return tasks_list
 
-def view_task():
+# Requirement 2 Nats
+def view_task(tasks_list):
     print("Your To Do List")
     if len(tasks_list) == 0:
-        print("No pending task!")
+        print("No tasks for you! Add a new task")
     else
-    for index, task in enumerate (task_list, 1):
-        print(f"{index}: {task}
+    for index, task in enumerate (tasks_list, 1):
+        print(f"{index}: {tasks_list})
     print("\n")
         
 if __name__ == "__main__":
