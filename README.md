@@ -49,6 +49,12 @@ Based on our modules, we have different requirements, teams, group projects. The
 
  
  Team:
- Elpidio: 
+ Elpidio:   
  Lencer:
  Valentina: 
+
+###################################################################################################################################
+Elpi: Main Menu creation - Add Tasks Function - 
+Lencer:
+Valentina: 
+###################################################################################################################################
