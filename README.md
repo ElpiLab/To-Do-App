@@ -1,50 +1,46 @@
 # To-Do-App
 A console for managing tasks for students
-Here is the Documentation of our To-Do App in the Programming Foundations class
 
-Analysis:
+This is the Documentation of our To-Do App in the Programming Foundations class
 
-Problem: As students in 1st year of BIT, we face a challenge in our academic task management:
+## Analysis:
 
- - difficulty prioritizing assignments, studies, and deadlines
- - Poor times management leading to last-minute stress and assignment uploading
- - Lack of priority and productivity to maintain focus during studies
- - 
- of managing tasks, learning, studying... so a To-Do App might help students better manage their time.  
+### Problem: 
+As  first year students BIT, we face a challenge of managing academic tasks, learning, studying... across different modules
 
-## The impact:
-Without an effective system or strategy, students experience:
-  - Missed deadlines or lower grades
-  - increased stress
-  - difficulty balancing individual and group work
+Problem: As As students in 1st year of BIT, we face a challenge of managing tasks, learning, studying... so a To-Do App might help students better manage their time.  
 
-## Solution To-Do App: 
-The solution can be a Task Manager, as a console based application with task orgnaization
+To-Do App: 
+A user opens the app in the console → adds tasks → chooses one to work on → starts a Pomodoro (25 min work) → gets a 5 min break → marks the task as done. 
 
-## Scenario: 
-Based on our modules, we have different requirements, teams, group projects. The idea is to put all tasks and deadline in  the console application console to get notifications and reminders for task management and completion.
+Scenario: 
+
+We have based on our modules, we have different requirements, teams, group projects. The idea is to put all tasks and deadline in  the tool to get notifications and reminders for task completion.
 
 ## User stories: 
 
-- As a user, I want to see the overview of the tasks on the console
-- As a user, I want to track time and see the time invested for each task or project 
-- As a user, I want to categorize based on topics
-- As a user, I want to sort and filter: priority, due date, category/subject, color-code
-- As a user, I want to delete tasks and mark tasks as done
-- As a user, I want to track time using Pomodoro
-- As a user, I want to see the weekly, monthy and yearly calender
-- - As a user I want to be able to share with others students from others modules for collaboration (in the future)
+- As a user, I want to
+  - see the tasks in the console. 
+  - share with others students from others modules for collaboration 
+  - track time and see the time invested for each task or project 
+  - categorize based on topics. 
+  - sort and filter: priority, due date, category/subject, color-code, 
+  - delete 
+  - Mark tasks as done 
+  - Get notify for due time 
+  - Incorporate break for Pomodoro 
+  - Calendar   
+  - As a user, I want a file. 
+  
+  
+- Use cases: 
+  - Show Menu (from menu.txt) 
+  - Create Tasks - Add new tasks with details
+  - Show Current Tasks, To-Do, and Pomodoro, Due Time 
+  - Tracking Tasks: Monitor completion stats
+  - Pomodoro Session
 
-
-### Use cases: 
-  - Show Menu: Display list of actions: Add Task, View Tasks, Mark as Done, Delete, Exit
-  - Create Tasks - Add new tasks with details: title, description, due date, priority
-  - Show Current Tasks: Display curretn tasks, completed tasks, or Pomodoro Info 
-  - Edit or delete Tasks in the console
-  - Tracking Tasks: Show completion statistics and time spent
-  - Pomodoro Session: Start, pause or reset a timer to manage work sessions
-
-- Use Project Requirements: 
+## Project Requirements: 
 
 1- Interactive App (console input)
 2- Data validation (input checking) 
@@ -52,6 +48,4 @@ Based on our modules, we have different requirements, teams, group projects. The
 
  
  Team:
- Elpidio: 
- Lencer:
- Valentina: 
+ Elpidio: Project Lead & Development 
