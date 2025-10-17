@@ -60,7 +60,7 @@ def view_task(tasks_list):
     if len(tasks_list) == 0:
         print("No tasks for you! Add a new task")
     else
-     for index, task in enumerate (tasks_list, 1):
+     for index, task in enumerate (tasks_list, 1): #loop through tasks starting from index count 1
         print(f"{index}. Title:{task['title']"}
         print(f" Description:{task['description']"}
         print(f" Priority: {task['priority']"}
