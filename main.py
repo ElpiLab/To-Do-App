@@ -60,9 +60,8 @@ def view_task(tasks_list):
     if len(tasks_list) == 0:
         print("No tasks for you! Add a new task")
     else
-    for index, task in enumerate (tasks_list, 1):
-        print(f"{index}: {tasks_list})
-    print("\n")
+     for index, task in enumerate (tasks_list, 1):
+        
         
 if __name__ == "__main__":
     main()
