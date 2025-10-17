@@ -28,13 +28,10 @@ Based on our modules, we have different requirements, teams, group projects. The
 
 - As a user, I want to see the overview of the tasks on the console
 - As a user, I want to track time and see the time invested for each task or project 
-- As a user, I want to categorize based on topics
-- As a user, I want to sort and filter: priority, due date, category/subject, color-code
+- As a user, I want to categorize based on topics, priority, due date and color-code
 - As a user, I want to delete tasks and mark tasks as done
 - As a user, I want to track time using Pomodoro
 - As a user, I want to see the weekly, monthy and yearly calender
-- - As a user I want to be able to share with others students from others modules for collaboration (in the future)
-
 
 ### Use cases: 
   - Show Menu: Display list of actions: Add Task, View Tasks, Mark as Done, Delete, Exit
@@ -44,7 +41,7 @@ Based on our modules, we have different requirements, teams, group projects. The
   - Tracking Tasks: Show completion statistics and time spent
   - Pomodoro Session: Start, pause or reset a timer to manage work sessions
 
-- Use Project Requirements: 
+ 
 
 1- Interactive App (console input)
 2- Data validation (input checking) 
