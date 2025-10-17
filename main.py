@@ -54,5 +54,14 @@ def add_task(tasks_list):
 
     return tasks_list
 
+def view_task():
+    print("Your To Do List")
+    if len(tasks_list) == 0:
+        print("No pending task!")
+    else
+    for index, task in enumerate (task_list, 1):
+        print(f"{index}: {task}
+    print("\n")
+        
 if __name__ == "__main__":
     main()
