@@ -86,6 +86,7 @@ def mark_task_complete(tasks_list):
         if 0 <= index < len(tasks_list):
             tasks_list[index]["complete"] = True
             print(f"\nTask '{tasks_list[index]['title']}' marked as COMPLETE!")
+            print("To confirm the status change, select Option 2 (View Tasks) from the menu.")
         else:
             print(f"\n Invalid task number. Please enter a number between 1 and {len(tasks_list)}.")
     except ValueError:
