@@ -4,42 +4,47 @@ Here is the Documentation of our To-Do App in the Programming Foundations class
 
 Analysis:
 
-Problem: As students in 1st year of BIT, we face a challenge in our academic task management:
+Problem: As first-year BIT students, we face a challenge with juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles:
+-Poor Time Management caused by insufficient time allocation, which makes students procrastinate and have last-minute stress. 
+- Difficulty in prioritizing the urgency of assignments, leading to effort underestimation.
+- Low productivity and not good focus as tasks lack clear boundaries & priorities, which causes mental strain during studies.
 
- - difficulty prioritizing assignments, studies, and deadlines
- - Poor times management leading to last-minute stress and assignment uploading
- - Lack of priority and productivity to maintain focus during studies
- - 
- of managing tasks, learning, studying... so a To-Do App might help students better manage their time.  
+## Impact:
+Lack of a centralized system to maximize productivity, especially in first-year students, often leads to:
+-Procrastination
+-Inefficient study time
+-last-minute stress
+-Sometimes missed deadlines with projects/assignments.
+- Poor Grades
 
-## The impact:
-Without an effective system or strategy, students experience:
-  - Missed deadlines or lower grades
-  - increased stress
-  - difficulty balancing individual and group work
-
-## Solution To-Do App: 
-The solution can be a Task Manager, as a console based application with task orgnaization
+## Solution:
+Our interactive To-Do-App with task organization provides an effective system and strategic ways to improve productivity by: 
+-Reducing Stress through the clear visualization of progress
+-Improved Grades through timely assignment/project submission and better quality work as a result of a better structured time allocation.
+-Implementing focus sessions with the Pomodoro app for higher productivity
+ 
 
 ## Scenario: 
-Based on our modules, we have different requirements, teams, group projects. The idea is to put all tasks and deadline in  the console application console to get notifications and reminders for task management and completion.
+Based on our modules, we have different requirements, teams, and group projects. The idea is to put all tasks and deadlines in  the console application to get notifications and reminders for task management and completion.
 
 ## User stories: 
 
-- As a user, I want to see the overview of the tasks on the console
-- As a user, I want to track time and see the time invested for each task or project 
-- As a user, I want to categorize based on topics, priority, due date and color-code
-- As a user, I want to delete tasks and mark tasks as done
-- As a user, I want to track time using Pomodoro
-- As a user, I want to see the weekly, monthy and yearly calender
+-As a user, I want to add a new task with a title, description, and priority so that I have all my To Do Tasks centralized and easily organized
+- As a user, I want to see the view my tasks on the console, so that I can immediately get an overview of the workload I have
+- As a user, I want to mark a task as complete, so that I can visually track my progress and maintain motivation
+- As a user, I want to track time and see the time invested(in minutes/hours) for each task/project, so that I can accurately estimate time for future projects and improve my planning.
+- As a user, I want to categorize based on topics, priority, due date, and color-code, so that I can constantly manage my time during stressful periods
+- As a user, I want to delete old/redundant tasks, so that my task list remains clean and focused only on actionable items.
+- As a user, I want to start and end a session using Pomodoro, e.g,  (25 min work/5 min break), so that I can maintain deep focus and prevent burning out during long study sessions.
+- As a user, I want to see the weekly, monthly, and yearly calendars
 
 ### Use cases: 
-  - Show Menu: Display list of actions: Add Task, View Tasks, Mark as Done, Delete, Exit
-  - Create Tasks - Add new tasks with details: title, description, due date, priority
-  - Show Current Tasks: Display curretn tasks, completed tasks, or Pomodoro Info 
-  - Edit or delete Tasks in the console
-  - Tracking Tasks: Show completion statistics and time spent
-  - Pomodoro Session: Start, pause or reset a timer to manage work sessions
+  - Show Menu: Display list of actions in the console: Add Task, View Tasks, Mark as Done, Delete, Exit
+  - Create/Edit Tasks - Allow new entry or modification of tasks with details: title, description, due date, priority.
+  - Show Current Tasks: Display all tasks with clear status, priority, description, and time spent based on Pomodoro Info 
+  - Edit or delete Tasks- Allow the user to modify an existing task's title, description, priority, or permanently delete it from the list.
+  - Tracking Tasks: Display statistical reports on productivity, e.g, completion time, time spent on all tasks, or each task.
+  - Pomodoro Session: Implement a precise timer function to start, pause, or reset structured work/break cycles (e.g, 25 minutes study, 5 minutes break) to improve focus.
 
  
 
