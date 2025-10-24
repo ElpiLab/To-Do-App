@@ -79,7 +79,7 @@ def mark_task_complete(tasks_list):
         return tasks_list
 
     try:
-        task_num = int(input("Enter the task number to mark complete: "))
+        task_num = int(input("Enter the task number from your CURRENT TASKS to mark complete: "))
         index = task_num -1
 
         #Check if the calculated index is valid (within the list's bounds)
