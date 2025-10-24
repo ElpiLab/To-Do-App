@@ -4,9 +4,9 @@ Here is the Documentation of our To-Do App in the Programming Foundations class
 
 Analysis:
 
-Problem: As first-year BIT students, we face a challenge with juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles:
--Poor Time Management caused by insufficient time allocation, which makes students procrastinate and have last-minute stress. 
+Problem: As first-year BIT students, we face a challenge with juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles: 
 - Difficulty in prioritizing the urgency of assignments, leading to effort underestimation.
+-Poor Time Management caused by insufficient time allocation, leading to procrastination and last-minute stress.
 - Low productivity and not good focus as tasks lack clear boundaries & priorities, which causes mental strain during studies.
 
 ## Impact:
