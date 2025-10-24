@@ -23,10 +23,10 @@ def main(): #Elpidio
             tasks = add_task(tasks)
         elif choice == "2":
             # Person 2 will implement this  
-            print("View Tasks")
+            view_task(tasks)
         elif choice == "3":
             # Person 2 will implement this
-            print("Mark Tasks as Complete")
+           tasks = mark_task_complete(tasks)
         elif choice == "4":
             # Person 3 will implement this
             print("Delete Task ")
@@ -54,16 +54,42 @@ def add_task(tasks_list):
 
     return tasks_list
 
-# Requirement 2 Nats
+# Requirement 2 Lencer
 def view_task(tasks_list):
-    print(" YOUR TO DO LIST ")
-    if len(tasks_list) == 0:
-        print("No tasks for you! Add a new task")
-    else
-     for index, task in enumerate (tasks_list, 1): #loop through tasks starting from index count 1
-        print(f"{index}. Title:{task['title']"}
-        print(f" Description:{task['description']"}
-        print(f" Priority: {task['priority']"}
-        
+    if not tasks_list:
+        print("\n Your To Do List is empty. Add a task to get started!")
+    else:
+        print("\n---YOUR CURRENT TASKS---")
+        for index, task in enumerate (tasks_list, 1):
+            is_complete = task.get("complete", False)
+            status = "✅ COMPLETE" if is_complete else "❌ Pending"
+            print(f"[{index}] - {status}")
+            print(f"Title: {task['title']}")
+            print(f"Priority: {task['priority']}")
+            print(f"Description: {task['description']}")
+            print("-" * 25)
+
+#Requirement 3 Lencer
+def mark_task_complete(tasks_list):
+    print("\n==MARK TASK COMPLETE==")
+    view_task(tasks_list)
+
+    if not tasks_list:
+        return tasks_list
+
+    try:
+        task_num = int(input("Enter the task number to mark complete: "))
+        index = task_num -1
+
+        if 0 <= index < len(tasks_list):
+            tasks_list[index]["complete"] = True
+            print(f"\nTask '{tasks_list[index]['title']}' marked as COMPLETE!")
+        else:
+            print(f"\n Invalid task number. Please enter a number between 1 and {len(tasks_list)}.")
+    except ValueError:
+        print("\n Invalid input. Please enter a valid whole number")
+    
+    return tasks_list 
+
 if __name__ == "__main__":
     main()
