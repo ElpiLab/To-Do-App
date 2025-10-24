@@ -60,7 +60,7 @@ def view_task(tasks_list):
         print("\n Your To Do List is empty. Add a task to get started!")
     else:
         print("\n---YOUR CURRENT TASKS---")
-        for index, task in enumerate (tasks_list, 1):
+        for index, task in enumerate (tasks_list, 1): # Start enumeration at 1 so users see [1], [2], [3] instead of [0], [1], [2]
             is_complete = task.get("complete", False)
             status = "✅ COMPLETE" if is_complete else "❌ Pending"
             print(f"[{index}] - {status}")
@@ -71,6 +71,7 @@ def view_task(tasks_list):
 
 #Requirement 3 Lencer
 def mark_task_complete(tasks_list):
+    #prompts user to mark a task as complete
     print("\n==MARK TASK COMPLETE==")
     view_task(tasks_list)
 
@@ -81,12 +82,14 @@ def mark_task_complete(tasks_list):
         task_num = int(input("Enter the task number to mark complete: "))
         index = task_num -1
 
+        #Check if the calculated index is valid (within the list's bounds)
         if 0 <= index < len(tasks_list):
             tasks_list[index]["complete"] = True
             print(f"\nTask '{tasks_list[index]['title']}' marked as COMPLETE!")
         else:
             print(f"\n Invalid task number. Please enter a number between 1 and {len(tasks_list)}.")
     except ValueError:
+        #Handle case where user enters text/non-integer input
         print("\n Invalid input. Please enter a valid whole number")
     
     return tasks_list 
