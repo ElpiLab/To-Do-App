@@ -29,11 +29,12 @@ def main(): #Elpidio
            tasks = mark_task_complete(tasks)
         elif choice == "4":
             # Person 3 will implement this
-            print("Delete Task ")
+            tasks = delete_task(tasks)
+
         elif choice == "5":
-            # Person 3 will implement this
-            print("Exit the application")
-            break
+           # Person 3 will implement this
+         exit_app(tasks)
+         break
         else:
             print("❌ Invalid choice! Please enter 1-5")
 
@@ -97,3 +98,42 @@ def mark_task_complete(tasks_list):
 
 if __name__ == "__main__":
     main()
+
+# Requirement 4 Valentina 
+ 
+def delete_task(tasks_list):
+    print("\n== DELETE TASK ==")
+
+    if not tasks_list:
+        print("There are no tasks to delete.")
+        return tasks_list
+
+    for i, task in enumerate(tasks_list, start=1):
+        print(f"{i}. {task['title']}")
+
+    try:
+        task_num = int(input("Enter the task number you want to delete: ")) - 1
+        if 0 <= task_num < len(tasks_list):
+            deleted = tasks_list.pop(task_num)
+            print(f"Task '{deleted['title']}' deleted successfully.")
+        else:
+            print("Invalid number.")
+    except ValueError:
+        print("Please enter a valid number.")
+
+    return tasks_list
+    
+# Requirement 5 Valentina
+def exit_app(tasks_list):
+    print("\n== EXIT APPLICATION ==")
+    save = input("Do you want to save your tasks before exiting? (y/n): ").lower()
+
+    if save == "y":
+        with open("tasks.txt", "w") as file:
+            for task in tasks_list:
+                status = "Complete" if task.get("complete", False) else "Pending"
+                file.write(f"{task['title']} | {task['description']} | {task['priority']} | {status}\n")
+        print("\n Tasks saved successfully in 'tasks.txt'.")
+
+    print("\n Thank you for using Student Task Manager. Goodbye!")
+    
