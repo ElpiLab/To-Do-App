@@ -22,13 +22,17 @@ def main():  # Elpidio
         if choice == "1":
             tasks = add_task(tasks)
         elif choice == "2":
-            view_tasks(tasks)
+            # Person 2 will implement this  
+            print("View Tasks")
         elif choice == "3":
-            tasks = mark_complete(tasks)
+            # Person 2 will implement this
+            print("Mark Tasks as Complete")
         elif choice == "4":
-            tasks = delete_task(tasks)
+            # Person 3 will implement this
+            print("Delete Task ")
         elif choice == "5":
-            exit_app(tasks)
+            # Person 3 will implement this
+            print("Exit the application")
             break
         else:
             print("Invalid choice! Please a valid number between 1-5")
@@ -48,75 +52,8 @@ def add_task(tasks_list):
     }
     
     tasks_list.append(task)
-    print(f"Done! Task '{title}' added successfully!")
-    return tasks_list
+    print(f"Here is the overview of your task {task}")
 
-
-# Requirement 2 - View Tasks - Lencer
-def view_tasks(tasks_list):
-    print("\n=== YOUR TASKS ===")
-    
-    if len(tasks_list) == 0:
-        print("No tasks found. Add some tasks first!")
-        return
-    
-    for i, task in enumerate(tasks_list, 1):
-        status = "DONE" if task["completed"] else "TODO"
-        print(f"{i}. [{status}] {task['title']}")
-        print(f"   Description: {task['description']}")
-        print(f"   Priority: {task['priority']}")
-        print()
-
-
-# Requirement 3 - Mark as complete - Lencer
-def mark_complete(tasks_list):
-    print("\n=== MARK TASK COMPLETE ===")
-    
-    if len(tasks_list) == 0:
-        print("No tasks to mark complete!")
-        return tasks_list
-    
-    # Show tasks first
-    view_tasks(tasks_list)
-    
-    try:
-        task_num = int(input("Enter task number to mark complete: "))
-        
-        if 1 <= task_num <= len(tasks_list):
-            tasks_list[task_num-1]["completed"] = True
-            print(f"Done! Task '{tasks_list[task_num-1]['title']}' marked as complete!")
-        else:
-            print("Sorry, Invalid task number!")
-            
-    except ValueError:
-        print("Please enter a valid number!")
-    
-    return tasks_list
-
-
-# Requirement 4 - Delete Task - Valentina
-def delete_task(tasks_list):
-    print("\n=== DELETE TASK ===")
-    
-    if len(tasks_list) == 0:
-        print("No tasks to delete!")
-        return tasks_list
-    
-    # Show tasks first
-    view_tasks(tasks_list)
-    
-    try:
-        task_num = int(input("Enter task number to delete: "))
-        
-        if 1 <= task_num <= len(tasks_list):
-            deleted_task = tasks_list.pop(task_num-1)
-            print(f" The task '{deleted_task['title']}' has been deleted!")
-        else:
-            print("Invalid task number!")
-            
-    except ValueError:
-        print("Please enter a valid number!")
-    
     return tasks_list
 
 
@@ -131,3 +68,42 @@ def exit_app(tasks_list):
 
 if __name__ == "__main__":
     main()
+
+# Requirement 4 Valentina 
+ 
+def delete_task(tasks_list):
+    print("\n== DELETE TASK ==")
+
+    if not tasks_list:
+        print("There are no tasks to delete.")
+        return tasks_list
+
+    for i, task in enumerate(tasks_list, start=1):
+        print(f"{i}. {task['title']}")
+
+    try:
+        task_num = int(input("Enter the task number you want to delete: ")) - 1
+        if 0 <= task_num < len(tasks_list):
+            deleted = tasks_list.pop(task_num)
+            print(f"Task '{deleted['title']}' deleted successfully.")
+        else:
+            print("Invalid number.")
+    except ValueError:
+        print("Please enter a valid number.")
+
+    return tasks_list
+    
+# Requirement 5 Valentina
+def exit_app(tasks_list):
+    print("\n== EXIT APPLICATION ==")
+    save = input("Do you want to save your tasks before exiting? (y/n): ").lower()
+
+    if save == "y":
+        with open("tasks.txt", "w") as file:
+            for task in tasks_list:
+                status = "Complete" if task.get("complete", False) else "Pending"
+                file.write(f"{task['title']} | {task['description']} | {task['priority']} | {status}\n")
+        print("\n Tasks saved successfully in 'tasks.txt'.")
+
+    print("\n Thank you for using Student Task Manager. Goodbye!")
+    
