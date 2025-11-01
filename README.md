@@ -54,12 +54,7 @@ Based on our modules, we have different requirements, teams, and group projects.
 
 2. Data Validation
 The application validates all user input to ensure data integrity and a smooth user experience
- #...inside main() loop
-elif choice == "5":
-    #...exit
-    break
-else:
-    print("Invalid choice! Please a valid number between 1-5")
+
 
  
  Team:
