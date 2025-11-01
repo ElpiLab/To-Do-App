@@ -30,7 +30,7 @@ Based on our modules, we have different requirements, teams, and group projects.
 ## User stories: 
 
 -As a user, I want to add a new task with a title, description, and priority so that I have all my To Do Tasks centralized and easily organized
-- As a user, I want to see the view my tasks on the console, so that I can immediately get an overview of the workload I have
+- As a user, I want to see the "view my tasks" on the console, so that I can immediately get an overview of the workload I have
 - As a user, I want to mark a task as complete, so that I can visually track my progress and maintain motivation
 - As a user, I want to track time and see the time invested(in minutes/hours) for each task/project, so that I can accurately estimate time for future projects and improve my planning.
 - As a user, I want to categorize based on topics, priority, due date, and color-code, so that I can constantly manage my time during stressful periods
@@ -51,6 +51,10 @@ Based on our modules, we have different requirements, teams, and group projects.
 1- Interactive App (console input)
 2- Data validation (input checking) 
 3- File processing(read/write) 
+
+2. Data Validation
+The application validates all user input to ensure data integrity and a smooth user experience
+
 
  
  Team:

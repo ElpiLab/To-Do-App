@@ -55,12 +55,14 @@ def add_task(tasks_list):
 # Requirement 2 - View Tasks - Lencer
 def view_tasks(tasks_list):
     print("\n=== YOUR TASKS ===")
-    
+
+    #First checks if the list is empty
+    #If empty, exits the function
     if len(tasks_list) == 0:
         print("No tasks found. Add some tasks first!")
         return
     
-    for i, task in enumerate(tasks_list, 1):
+    for i, task in enumerate(tasks_list, 1): #Tasks start from 1 and not the default 0
         status = "DONE" if task["completed"] else "TODO"
         print(f"{i}. [{status}] {task['title']}")
         print(f"   Description: {task['description']}")
@@ -71,23 +73,27 @@ def view_tasks(tasks_list):
 # Requirement 3 - Mark Complete - Lencer
 def mark_complete(tasks_list):
     print("\n=== MARK TASK COMPLETE ===")
-    
+
+    #First checks if the list is empty or not
     if len(tasks_list) == 0:
         print("No tasks to mark complete!")
         return tasks_list
     
-    # Show tasks first
+    # Show the current tasks
     view_tasks(tasks_list)
-    
+
+    #If the user enters an invalid number not on the list
     try:
         task_num = int(input("Enter task number to mark complete: "))
-        
+
+        #validates if the entered number is within the range of 1 and the total number of tasks
         if 1 <= task_num <= len(tasks_list):
-            tasks_list[task_num-1]["completed"] = True
+            tasks_list[task_num-1]["completed"] = True #if its a valid number
             print(f"Done! Task '{tasks_list[task_num-1]['title']}' marked as complete!")
         else:
             print("Invalid task number!")
-            
+
+    #If the user enters texts/symbols instead of a number
     except ValueError:
         print("Please enter a valid number!")
     
