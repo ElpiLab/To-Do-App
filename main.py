@@ -4,7 +4,8 @@ Team: Elpidio, Lencer, Valentina
 """
 
 def main():  # Elpidio
-    tasks = []  # This will store our tasks
+    # Load tasks from file at startup
+    tasks = tasks_from_file() #(File im Ordner)
     
     print("STUDENT TASK MANAGER")
     print("======================")
@@ -33,6 +34,52 @@ def main():  # Elpidio
         else:
             print("Invalid choice! Please a valid number between 1-5")
 
+# File Operations -  Chapter 6 #(FIle always in same folder)
+def tasks_from_file():
+    """Load tasks from file using open() function with read mode"""
+    tasks = []
+    try:
+        # Open file for reading
+        file_object = open('tasks.txt', 'r') #file im Ordner)
+        
+        # Read each line from the file (Loop)
+        for line in file_object:
+            # Remove newline character and split fields
+            line = line.rstrip('\n')
+            fields = line.split('|')
+            
+            if len(fields) == 4:
+                task = {
+                    "title": fields[0],
+                    "description": fields[1],
+                    "priority": fields[2],
+                    "completed": fields[3] == 'True'
+                }
+                tasks.append(task)
+        
+        # Close the file
+        file_object.close()
+        
+    except FileNotFoundError:
+        # If file doesn't exist, return empty list
+        pass
+    
+    return tasks
+
+def save_tasks_to_file(tasks_list):
+    """Save tasks to file using open() function with write mode"""
+    # Open file for writing
+    file_object = open('tasks.txt', 'w')
+    
+    # Write each task to the file
+    for task in tasks_list:
+        # Convert task data to string and concatenate newline
+        line = f"{task['title']}|{task['description']}|{task['priority']}|{task['completed']}\n"
+        file_object.write(line)
+    
+    # Close the file
+    file_object.close()
+
 # Requirement 1 - Add tasks - Elpidio
 def add_task(tasks_list):
     print("\n=== ADD NEW TASK ===")
@@ -49,56 +96,52 @@ def add_task(tasks_list):
     
     tasks_list.append(task)
     print(f"Your task '{title}' has been added successfully!")
+    
+    # Auto-save after adding task
+    save_tasks_to_file(tasks_list)
     return tasks_list
-
 
 # Requirement 2 - View Tasks - Lencer
 def view_tasks(tasks_list):
     print("\n=== YOUR TASKS ===")
-
-    #First checks if the list is empty
-    #If empty, exits the function
+    
     if len(tasks_list) == 0:
         print("No tasks found. Add some tasks first!")
         return
     
-    for i, task in enumerate(tasks_list, 1): #Tasks start from 1 and not the default 0
+    for i, task in enumerate(tasks_list, 1):
         status = "DONE" if task["completed"] else "TODO"
         print(f"{i}. [{status}] {task['title']}")
         print(f"   Description: {task['description']}")
         print(f"   Priority: {task['priority']}")
         print()
 
-
 # Requirement 3 - Mark Complete - Lencer
 def mark_complete(tasks_list):
     print("\n=== MARK TASK COMPLETE ===")
-
-    #First checks if the list is empty or not
+    
     if len(tasks_list) == 0:
         print("No tasks to mark complete!")
         return tasks_list
     
-    # Show the current tasks
     view_tasks(tasks_list)
-
-    #If the user enters an invalid number not on the list
+    
     try:
         task_num = int(input("Enter task number to mark complete: "))
-
-        #validates if the entered number is within the range of 1 and the total number of tasks
+        
         if 1 <= task_num <= len(tasks_list):
-            tasks_list[task_num-1]["completed"] = True #if its a valid number
+            tasks_list[task_num-1]["completed"] = True
             print(f"Done! Task '{tasks_list[task_num-1]['title']}' marked as complete!")
+            
+            # Auto-save after marking complete
+            save_tasks_to_file(tasks_list)
         else:
             print("Invalid task number!")
-
-    #If the user enters texts/symbols instead of a number
+            
     except ValueError:
         print("Please enter a valid number!")
     
     return tasks_list
-
 
 # Requirement 4 - Delete Task - Valentina
 def delete_task(tasks_list):
@@ -108,7 +151,6 @@ def delete_task(tasks_list):
         print("No tasks to delete!")
         return tasks_list
     
-    # Show tasks first
     view_tasks(tasks_list)
     
     try:
@@ -117,6 +159,9 @@ def delete_task(tasks_list):
         if 1 <= task_num <= len(tasks_list):
             deleted_task = tasks_list.pop(task_num-1)
             print(f" The task '{deleted_task['title']}' is deleted!")
+            
+            # Auto-save after deletion
+            save_tasks_to_file(tasks_list)
         else:
             print("Invalid task number!")
             
@@ -125,15 +170,18 @@ def delete_task(tasks_list):
     
     return tasks_list
 
-
-# Requirement 5 - Exit . Valentina
+# Requirement 5 - Exit - Valentina
 def exit_app(tasks_list):
     print("\n=== EXIT ===")
+    
+    # Ask if user wants to save
+    save = input("Save tasks before exiting? (y/n): ").lower()
+    if save == 'y':
+        save_tasks_to_file(tasks_list)
+    
     print("Thank you for using Student Task Manager!")
     print(f"You have {len(tasks_list)} task(s) in your list.")
     print("Goodbye!")
-
-    # Note: File saving would be added here later
 
 if __name__ == "__main__":
     main()
