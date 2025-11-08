@@ -6,15 +6,15 @@ Analysis:
 
 Problem: As first-year BIT students, we face a challenge with juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles: 
 - Difficulty in prioritizing the urgency of assignments, leading to effort underestimation.
--Poor Time Management caused by insufficient time allocation, leading to procrastination and last-minute stress.
+- Poor Time Management caused by insufficient time allocation, leading to procrastination and last-minute stress
 - Low productivity and not good focus as tasks lack clear boundaries & priorities, which causes mental strain during studies.
 
 ## Impact:
 Lack of a centralized system to maximize productivity, especially in first-year students, often leads to:
--Procrastination
--Inefficient study time
--last-minute stress
--Sometimes missed deadlines with projects/assignments.
+- Procrastination
+- Inefficient study time
+- last-minute stress
+- Sometimes missed deadlines with projects/assignments.
 - Poor Grades
 
 ## Solution:
@@ -23,7 +23,6 @@ Our interactive To-Do-App with task organization provides an effective system an
 -Improved Grades through timely assignment/project submission and better quality work as a result of a better structured time allocation.
 -Implementing focus sessions with the Pomodoro app for higher productivity
  
-
 ## Scenario: 
 Based on our modules, we have different requirements, teams, and group projects. The idea is to put all tasks and deadlines in  the console application to get notifications and reminders for task management and completion.
 
@@ -44,7 +43,7 @@ Based on our modules, we have different requirements, teams, and group projects.
   - Show Current Tasks: Display all tasks with clear status, priority, description, and time spent based on Pomodoro Info 
   - Edit or delete Tasks- Allow the user to modify an existing task's title, description, priority, or permanently delete it from the list.
   - Tracking Tasks: Display statistical reports on productivity, e.g, completion time, time spent on all tasks, or each task.
-  - Pomodoro Session: Implement a precise timer function to start, pause, or reset structured work/break cycles (e.g, 25 minutes study, 5 minutes break) to improve focus.
+  - Pomodoro Session: Implement a precise timer function to start, pause, or reset structured work/break cycles (e.g, 25 minutes study, 5 minutes break) to improve focus.(long term)
 
  
 
@@ -54,10 +53,3 @@ Based on our modules, we have different requirements, teams, and group projects.
 
 2. Data Validation
 The application validates all user input to ensure data integrity and a smooth user experience
-
-
- 
- Team:
- Elpidio:   
- Lencer:
- Valentina: Features
