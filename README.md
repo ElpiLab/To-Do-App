@@ -48,15 +48,15 @@ Based on our modules, we have different requirements, teams, and group projects.
  
 
 1- Interactive App (console input)
-2- Data validation (input checking) 
+The application interacts with the user through the console, accepting input and displaying responses in real time. It should provide clear prompts, menus, and feedback to create an engaging and easy-to-use experience
+
+2- Data validation (input checking)
+The application validates all user input to ensure data integrity and a smooth user experience. Invalid or missing data should be handled gracefully, with clear error messages and opportunities for correction
+
 3- File processing(read/write) 
+The application can read data from and write data to files, allowing users to save and retrieve information. Proper file handling ensures that data is stored securely and can be accessed or updated when needed
 
-2. Data Validation
-The application validates all user input to ensure data integrity and a smooth user experience
-
-
- 
  Team:
  Elpidio:   
  Lencer:
- Valentina: Features
+ Valentina:
