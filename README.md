@@ -53,3 +53,10 @@ Based on our modules, we have different requirements, teams, and group projects.
 
 2. Data Validation
 The application validates all user input to ensure data integrity and a smooth user experience
+
+
+ 
+ Team:
+ Elpidio:   
+ Lencer:
+ Valentina: Features
