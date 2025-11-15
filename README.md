@@ -26,7 +26,7 @@ Our interactive To-Do-App with task organization provides an effective system an
 ## Scenario: 
 Based on our modules, we have different requirements, teams, and group projects. The idea is to put all tasks and deadlines in  the console application to get notifications and reminders for task management and completion.
 
-## User stories: 
+## Requirements/User stories: 
 
 -As a user, I want to add a new task with a title, description, and priority so that I have all my To Do Tasks centralized and easily organized
 - As a user, I want to see the "view my tasks" on the console, so that I can immediately get an overview of the workload I have
