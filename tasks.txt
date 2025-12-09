@@ -1,1 +1,3 @@
 Debug|Debugging|Low|False
+dfg|dfg|h|False
+werq|ewrtw|Medium|False

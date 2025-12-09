@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Test Task",
+        "description": "This is a test task",
+        "priority": "High",
+        "completed": false
+    },
+    {
+        "title": "Test Task",
+        "description": "Test Description",
+        "priority": "High",
+        "completed": false
+    },
+    {
+        "title": "JSON Task",
+        "description": "Testing JSON storage",
+        "priority": "High",
+        "completed": false
+    },
+    {
+        "title": "Debug",
+        "description": "Debugging",
+        "priority": "Low",
+        "completed": false
+    },
+    {
+        "title": "dfg",
+        "description": "dfg",
+        "priority": "High",
+        "completed": false
+    },
+    {
+        "title": "werq",
+        "description": "ewrtw",
+        "priority": "Medium",
+        "completed": false
+    }
+]

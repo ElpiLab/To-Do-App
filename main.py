@@ -2,188 +2,119 @@
 Student Task Manager - Main Application
 Team: Elpidio, Lencer, Valentina
 """
+from file import tasks_from_file, save_tasks_to_file
+import tasks as task_module
+import config
+import json
 
-def main():  # Elpidio
-    # Load tasks from file at startup
-    tasks = tasks_from_file() #(File im Ordner)
+
+def main():  # Elpidio 
+    """
+    Main application entry point.
+    Initializes the application, loads data, and runs the main event loop.
+    """
     
-    print("STUDENT TASK MANAGER")
-    print("======================")
+    print("\nSTUDENT TASK MANAGER")
+    print("======================\n")
+    
+    # Load tasks from file at startup
+    try:
+        task_list = tasks_from_file()
+    except FileNotFoundError:
+        print("\nNo saved tasks found. Starting with an empty list.")
+        task_list = []
+    except json.JSONDecodeError:
+        print(f"\n{config.BOLD}Error loading tasks:{config.RESET_FORMATTING} File is corrupted or empty.")
+        print("Starting with an empty task list.\n")
+        task_list = []
+    except Exception as e:
+        print(f"\n{config.BOLD}Error loading tasks from file:{config.RESET_FORMATTING} {e}")
+        print("Starting with an empty task list.\n")
+        task_list = []
     
     while True:
-        print("\nMAIN MENU")
-        print("1. Add Task")
-        print("2. View Tasks") 
-        print("3. Mark Task Complete")
-        print("4. Delete Task")
-        print("5. Exit")
+        # Display the menu dynamically based on config.MENU_OPTIONS
+        print(f"\n{config.UNDERLINE}MAIN MENU{config.RESET_FORMATTING}\n")
+        for option in config.MENU_OPTIONS:
+            # Underline first letter of label for display to indicate it's a hotkey
+            label = option['label']
+            first_letter = label[0]
+            rest = label[1:]
+            display_label = f"{config.UNDERLINE}{first_letter}{config.RESET_FORMATTING}{rest}"
+            print(f"{option['key']}. {display_label}")
         
-        choice = input("\nEnter your choice (1-5): ")
+        choice = input("\nEnter your choice: ").lower().strip()
         
-        if choice == "1":
-            tasks = add_task(tasks)
-        elif choice == "2":
-            view_tasks(tasks)
-        elif choice == "3":
-            tasks = mark_complete(tasks)
-        elif choice == "4":
-            tasks = delete_task(tasks)
-        elif choice == "5":
-            exit_app(tasks)
-            break
+        selected_function = None
+        
+        # Iterate through all configured options to find a match for the user's input
+        for option in config.MENU_OPTIONS:
+            # Check if input matches the number key, any defined alias, or the first letter
+            if (choice == option['key'] or 
+                choice in option['aliases'] or 
+                choice == option['label'][0].lower()
+                ):
+                # Support both 'function' and 'action' keys for compatibility
+                selected_function = option.get('function')
+                break
+        
+        if selected_function:
+            # Dynamic Function Dispatch:
+            # 1. Check if the function exists in the 'tasks' module (e.g., add_task)
+            # 2. If not, check the current global namespace (e.g., exit_app)
+            if hasattr(task_module, selected_function):
+                func = getattr(task_module, selected_function)
+            else:
+                func = globals().get(selected_function)  # for exit_app
+            
+            if func:
+                try:
+                    # Execute the retrieved function, passing the current tasks list
+                    # Functions modify the list in-place, so no return value is needed.
+                    func(task_list)
+                    
+                    # Special handling for exit to break the application loop
+                    if selected_function == "exit_app":
+                        return
+                        
+                except Exception as e:
+                    print(f"\n{config.BOLD}Error executing '{selected_function}':{config.RESET_FORMATTING} {e}")
+                    print("Returning to main menu...")
+            else:
+                print(f"\n{config.BOLD}Configuration Error:{config.RESET_FORMATTING} Function '{selected_function}' not found.")
+                print("Ensure it is imported in main.py and matches the name in config.py.")
         else:
-            print("Invalid choice! Please a valid number between 1-5")
-
-# File Operations -  Chapter 6 #(FIle always in same folder)
-def tasks_from_file():
-    """Load tasks from file using open() function with read mode"""
-    tasks = []
-    try:
-        # Open file for reading
-        file_object = open('tasks.txt', 'r') #file im Ordner)
-        
-        # Read each line from the file (Loop)
-        for line in file_object:
-            # Remove newline character and split fields
-            line = line.rstrip('\n')
-            fields = line.split('|')
-            
-            if len(fields) == 4:
-                task = {
-                    "title": fields[0],
-                    "description": fields[1],
-                    "priority": fields[2],
-                    "completed": fields[3] == 'True'
-                }
-                tasks.append(task)
-        
-        # Close the file
-        file_object.close()
-        
-    except FileNotFoundError:
-        # If file doesn't exist, return empty list
-        pass
-    
-    return tasks
-
-def save_tasks_to_file(tasks_list):
-    """Save tasks to file using open() function with write mode"""
-    # Open file for writing
-    file_object = open('tasks.txt', 'w')
-    
-    # Write each task to the file
-    for task in tasks_list:
-        # Convert task data to string and concatenate newline
-        line = f"{task['title']}|{task['description']}|{task['priority']}|{task['completed']}\n"
-        file_object.write(line)
-    
-    # Close the file
-    file_object.close()
-
-# Requirement 1 - Add tasks - Elpidio
-def add_task(tasks_list):
-    print("\n=== ADD NEW TASK ===")
-    title = input("Enter task title: ")
-    description = input("Enter task description: ")
-    priority = input("Choose a priority level (High/Medium/Low): ")
-
-    #exception 
-    
-    task = {
-        "title": title,
-        "description": description,
-        "priority": priority,
-        "completed": False
-    }
-    
-    tasks_list.append(task)
-    print(f"Your task '{title}' has been added successfully!")
-    
-    # Auto-save after adding task
-    save_tasks_to_file(tasks_list)
-    return tasks_list
-
-# Requirement 2 - View Tasks - Lencer
-def view_tasks(tasks_list):
-    print("\n=== YOUR TASKS ===")
-    
-    if len(tasks_list) == 0:
-        print("No tasks found. Add some tasks first!")
-        return
-    
-    for i, task in enumerate(tasks_list, 1):
-        status = "DONE" if task["completed"] else "TODO"
-        print(f"{i}. [{status}] {task['title']}")
-        print(f"   Description: {task['description']}")
-        print(f"   Priority: {task['priority']}")
-        print()
-
-# Requirement 3 - Mark Complete - Lencer
-def mark_complete(tasks_list):
-    print("\n=== MARK TASK COMPLETE ===")
-    
-    if len(tasks_list) == 0:
-        print("No tasks to mark complete!")
-        return tasks_list
-    
-    view_tasks(tasks_list)
-    
-    try:
-        task_num = int(input("Enter task number to mark complete: "))
-        
-        if 1 <= task_num <= len(tasks_list):
-            tasks_list[task_num-1]["completed"] = True
-            print(f"Done! Task '{tasks_list[task_num-1]['title']}' marked as complete!")
-            
-            # Auto-save after marking complete
-            save_tasks_to_file(tasks_list)
-        else:
-            print("Invalid task number!")
-            
-    except ValueError:
-        print("Please enter a valid number!")
-    
-    return tasks_list
-
-# Requirement 4 - Delete Task - Valentina
-def delete_task(tasks_list):
-    print("\n=== DELETE TASK ===")
-    
-    if len(tasks_list) == 0:
-        print("No tasks to delete!")
-        return tasks_list
-    
-    view_tasks(tasks_list)
-    
-    try:
-        task_num = int(input("Enter task number to delete: "))
-        
-        if 1 <= task_num <= len(tasks_list):
-            deleted_task = tasks_list.pop(task_num-1)
-            print(f" The task '{deleted_task['title']}' is deleted!")
-            
-            # Auto-save after deletion
-            save_tasks_to_file(tasks_list)
-        else:
-            print("Invalid task number!")
-            
-    except ValueError:
-        print("Please enter a valid number!")
-    
-    return tasks_list
+            print(f"\n{config.BOLD}Invalid choice: '{choice}'{config.RESET_FORMATTING}")
+            print("Please enter one of the following:")
+            print(" - The number (e.g., '1')")
+            print(" - The underlined letter (e.g., 'a')")
+            print(" - The full word (e.g., 'add')")
 
 # Requirement 5 - Exit - Valentina
 def exit_app(tasks_list):
+    """
+    Handles application exit, prompting the user to save changes.
+    """
     print("\n=== EXIT ===")
     
-    # Ask if user wants to save
-    save = input("Save tasks before exiting? (y/n): ").lower()
-    if save == 'y':
-        save_tasks_to_file(tasks_list)
+    while True:
+        # Ask if user wants to save with validation
+        save = input("Save tasks before exiting? (y/n): ").lower().strip()
+        
+        if save in ['y', 'yes']:
+            save_tasks_to_file(tasks_list)
+            print("Tasks saved successfully.")
+            break
+        elif save in ['n', 'no']:
+            print("Exiting without saving.")
+            break
+        else:
+            print(f"{config.BOLD}Invalid input.{config.RESET_FORMATTING} Please enter 'y' for yes or 'n' for no.")
     
     print("Thank you for using Student Task Manager!")
     print(f"You have {len(tasks_list)} task(s) in your list.")
     print("Goodbye!")
+
 
 if __name__ == "__main__":
     main()
