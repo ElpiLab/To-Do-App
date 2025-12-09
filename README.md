@@ -1,15 +1,15 @@
 # To-Do-App
 
-A console for managing tasks for students
+A console for managing tasks for students.
 Here is the Documentation of our To-Do App in the Programming Foundations class
 
 Analysis:
 
-Problem: As first-year BIT students, we face a challenge with juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles:
+Problem: As first-year BIT students, we face challenges juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles:
 
 - Difficulty in prioritizing the urgency of assignments, leading to effort underestimation.
 - Poor Time Management caused by insufficient time allocation, leading to procrastination and last-minute stress
-- Low productivity and not good focus as tasks lack clear boundaries & priorities, which causes mental strain during studies.
+- Low productivity and poor focus as tasks lack clear boundaries & priorities, which causes mental strain during studies.
 
 ## Impact
 
@@ -53,13 +53,13 @@ Based on our modules, we have different requirements, teams, and group projects.
 - Pomodoro Session: Implement a precise timer function to start, pause, or reset structured work/break cycles (e.g, 25 minutes study, 5 minutes break) to improve focus.(long term)
 
 1- Interactive App (console input)
-The application interacts with the user through the console, accepting input and displaying responses in real time. It should provide clear prompts, menus, and feedback to create an engaging and easy-to-use experience
+The application interacts with the user through the console, accepting input and displaying responses in real time. It should provide clear prompts, menus, and feedback to create an engaging and easy-to-use experience.
 
 2- Data validation (input checking)
-The application validates all user input to ensure data integrity and a smooth user experience. Invalid or missing data should be handled gracefully, with clear error messages and opportunities for correction
+The application validates all user input to ensure data integrity and a smooth user experience. Invalid or missing data should be handled gracefully, with clear error messages and opportunities for correction.
 
 3- File processing(read/write)
-The application can read data from and write data to files, allowing users to save and retrieve information. Proper file handling ensures that data is stored securely and can be accessed or updated when needed
+The application can read data from and write data to files, allowing users to save and retrieve information. Proper file handling ensures that data is stored securely and can be accessed or updated when needed.
 
  Team:
  Elpidio:
