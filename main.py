@@ -54,18 +54,16 @@ def main():  # Elpidio
         
         choice = input("\nEnter your choice: ").lower().strip()
         
-        selected_function = None
-        
-        # Iterate through all configured options to find a match for the user's input
-        for option in config.MENU_OPTIONS:
-            # Check if input matches the number key, any defined alias, or the first letter
-            if (choice == option['key'] or 
-                choice in option['aliases'] or 
-                choice == option['label'][0].lower()
-                ):
-                # Support both 'function' and 'action' keys for compatibility
-                selected_function = option.get('function')
-                break
+        selected_function = next(
+            (
+                option.get('function')
+                for option in config.MENU_OPTIONS
+                if choice == option['key']
+                or choice in option['aliases']
+                or choice == option['label'][0].lower()
+            ),
+            None,
+        )
         
         if selected_function:
             # Dynamic Function Dispatch across action modules (add/view/complete/delete) or globals (exit)

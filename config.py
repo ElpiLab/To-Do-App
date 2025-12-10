@@ -4,7 +4,6 @@
 MIN_INPUT_LENGTH = 3
 
 # File path and name for storing tasks
-# TASKS_FILE = 'tasks.txt'
 TASKS_FILE = 'tasks.json'
 
 # ANSI Escape Codes for formatting
