@@ -3,9 +3,18 @@ Student Task Manager - Main Application
 Team: Elpidio, Lencer, Valentina
 """
 from file import tasks_from_file, save_tasks_to_file
-import tasks as task_module
+import tasks_add_view
+import tasks_complete_delete
 import config
 import json
+
+
+def get_function(selected_function):
+    """Resolve the function name to a callable across action modules or globals."""
+    for module in (tasks_add_view, tasks_complete_delete):
+        if hasattr(module, selected_function):
+            return getattr(module, selected_function)
+    return globals().get(selected_function)
 
 
 def main():  # Elpidio 
@@ -59,13 +68,8 @@ def main():  # Elpidio
                 break
         
         if selected_function:
-            # Dynamic Function Dispatch:
-            # 1. Check if the function exists in the 'tasks' module (e.g., add_task)
-            # 2. If not, check the current global namespace (e.g., exit_app)
-            if hasattr(task_module, selected_function):
-                func = getattr(task_module, selected_function)
-            else:
-                func = globals().get(selected_function)  # for exit_app
+            # Dynamic Function Dispatch across action modules (add/view/complete/delete) or globals (exit)
+            func = get_function(selected_function)
             
             if func:
                 try:
