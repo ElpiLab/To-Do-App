@@ -77,7 +77,7 @@ def view_tasks(tasks_list):
         return
     
     for i, task in enumerate(tasks_list, 1):
-        status = "DONE" if task["completed"] else "TODO"
+        status = "DONE" if task["completed"]  else "TODO"
         print(f"{i}. [{status}] {task['title']}")
         print(f"   Description: {task['description']}")
         print(f"   Priority: {task['priority']}")

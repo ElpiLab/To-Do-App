@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "title": "Do Math",
+        "description": "Read chapter 12",
+        "priority": "Medium",
+        "completed": false
+    },
+    {
+        "title": "Project",
+        "description": "submit project on time",
+        "priority": "Low",
+        "completed": false
+    }
+]

@@ -97,24 +97,10 @@ def main():  # Elpidio
 # Requirement 5 - Exit - Valentina
 def exit_app(tasks_list):
     """
-    Handles application exit, prompting the user to save changes.
+    Handle application exit. Tasks are already auto-saved on add/complete/delete.
     """
     print("\n=== EXIT ===")
-    
-    while True:
-        # Ask if user wants to save with validation
-        save = input("Save tasks before exiting? (y/n): ").lower().strip()
-        
-        if save in ['y', 'yes']:
-            save_tasks_to_file(tasks_list)
-            print("Tasks saved successfully.")
-            break
-        elif save in ['n', 'no']:
-            print("Exiting without saving.")
-            break
-        else:
-            print(f"{config.BOLD}Invalid input.{config.RESET_FORMATTING} Please enter 'y' for yes or 'n' for no.")
-    
+    save_tasks_to_file(tasks_list)
     print("Thank you for using Student Task Manager!")
     print(f"You have {len(tasks_list)} task(s) in your list.")
     print("Goodbye!")
