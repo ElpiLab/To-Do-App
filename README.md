@@ -150,57 +150,24 @@ These checks prevent crashes and guide the user to provide correct input, matchi
 
 ---
 
-- **Mark complete :** cancel, numeric input, range check
+- **Mark Complete/Delete:** The main menu checks for valid options and handles invalid choices gracefully:
 	```python
-	user_input = input("Enter task number to mark complete (or 'c' to cancel): ").strip()
+  if len(tasks_list) == 0:
+    print("No tasks to mark complete/delete!")
+    return
+
+  user_input = input("Enter task number (or 'c' to cancel): ").strip()
   if user_input.lower() == 'c':
     print("Operation cancelled.")
     return
 
-  task_num = int(user_input)
+  task_num = int(user_input)  # ValueError → "Invalid input! Please enter a valid number."
   if 1 <= task_num <= len(tasks_list):
-    tasks_list[task_num-1]["completed"] = True
-    save_tasks_to_file(tasks_list)
+    # mark_complete: tasks_list[task_num-1]["completed"] = True; save_tasks_to_file(...)
+    # delete_task: deleted_task = tasks_list.pop(task_num-1); save_tasks_to_file(...)
   else:
     print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
-  ...
-  except ValueError:
-    print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
 	```
-
-- **Delete:** The main menu checks for valid options and handles invalid choices gracefully:
-	```python
-  user_input = input("Enter task number to delete (or 'c' to cancel): ").strip()
-  if user_input.lower() == 'c':
-    print("Operation cancelled.")
-    return
-
-  task_num = int(user_input)
-  if 1 <= task_num <= len(tasks_list):
-    deleted_task = tasks_list.pop(task_num-1)
-    save_tasks_to_file(tasks_list)
-  else:
-    print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
-  ...
-  except ValueError:
-    print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
-  ```# filepath: /workspaces/To-Do-App/tasks_complete_delete.py
-  user_input = input("Enter task number to delete (or 'c' to cancel): ").strip()
-  if user_input.lower() == 'c':
-    print("Operation cancelled.")
-    return
-
-  task_num = int(user_input)
-  if 1 <= task_num <= len(tasks_list):
-    deleted_task = tasks_list.pop(task_num-1)
-    save_tasks_to_file(tasks_list)
-  else:
-    print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
-  ...
-  except ValueError:
-    print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
-	```
- 
 ---
 
 3- File processing(read/write) 
