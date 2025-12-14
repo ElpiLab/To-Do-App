@@ -93,7 +93,8 @@ The application validates all user input to ensure data integrity and a smooth u
             return getattr(module, selected_function)
     return globals().get(selected_function)
 	```
-
+ Ensures only functions that actually exist in the action modules/globals are invoked; missing/typo’d config entries are caught as configuration errors instead of crashing.
+ 
 - **Title description and length:** Enforce minimum length from config.MIN_INPUT_LENGTH.
 	```python
 	while True:
@@ -109,7 +110,7 @@ The application validates all user input to ensure data integrity and a smooth u
     print(f"Description must be at least {config.MIN_INPUT_LENGTH} characters long.")
 	```
 
-These ensures 
+These prevents empty/too-short task titles.
 
 ---
 
@@ -130,6 +131,7 @@ These ensures
         break
     print("Invalid priority. Please try again. Use the number, first letter or first word.")
 	```
+ This prevents invalid priority values.
  
  - **Empty List guard:** aborts when there are no tasks to act on.
 	```python
@@ -137,7 +139,7 @@ These ensures
     print("No tasks to mark complete!")
     return
 	```
-These checks prevent crashes and guide the user to provide correct input, matching the validation requirements described in the project guidelines.
+This avoids invalid indexing on an empty list.
 
 ---
 
@@ -158,7 +160,7 @@ These checks prevent crashes and guide the user to provide correct input, matchi
     # delete_task: deleted_task = tasks_list.pop(task_num-1); save_tasks_to_file(...)
   else:
     print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
-	```
+Prevents non-numeric input and out-of-range task selection before updating/deleting and saving.	```
 ---
 
 3- File processing(read/write) 
