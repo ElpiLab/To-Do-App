@@ -67,3 +67,4 @@ MENU_OPTIONS = [
         'aliases': ['e', 'exit']
     },
 ]
+
