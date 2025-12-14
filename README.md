@@ -37,22 +37,13 @@ The idea is to put all tasks in the console application to manage and organize t
 
 -As a student, I want to add a new task with a title, description, and priority so that I have all my To Do Tasks centralized and easily organized
 - As a student, I want to see the "view my tasks" on the console, so that I can immediately get an overview of the workload I have
-- As a student, I want to mark a task as complete, so that I can visually track my progress and maintain motivation
-- As a student, I want to track time and see the time invested(in minutes/hours) for each task/project, so that I can accurately estimate time for future projects and improve my planning.
-- As a student, I want to categorize based on topics, priority, due date, and color-code, so that I can constantly manage my time during stressful periods
-- As a student, I want to delete old/redundant tasks, so that my task list remains clean and focused only on actionable items.
-- As a student, I want to start and end a session using Pomodoro, e.g,  (25 min work/5 min break), so that I can maintain deep focus and prevent burning out during long study sessions.
-- As a student, I want to see the weekly, monthly, and yearly calendars
+- As a student, I want to mark a task as complete
 
 ### Use cases: 
   - Show Menu: Display list of actions in the console: Add Task, View Tasks, Mark as Done, Delete, Exit
   - Create/Edit Tasks - Allow new entry or modification of tasks with details: title, description, due date, priority.
-  - Show Current Tasks: Display all tasks with clear status, priority, description, and time spent based on Pomodoro Info 
+  - Show Current Tasks: Display all tasks with clear status, priority, description
   - Edit or delete Tasks- Allow the user to modify an existing task's title, description, priority, or permanently delete it from the list.
-  - Tracking Tasks: Display statistical reports on productivity, e.g, completion time, time spent on all tasks, or each task.
-  - Pomodoro Session: Implement a precise timer function to start, pause, or reset structured work/break cycles (e.g, 25 minutes study, 5 minutes break) to improve focus.(long term)
-
- 
 
 1- Interactive App (console input)
 The application is fully console-based. Users can:
