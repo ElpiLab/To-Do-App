@@ -74,3 +74,5 @@ def delete_task(tasks_list):
                 
         except ValueError:
             print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
+
+
