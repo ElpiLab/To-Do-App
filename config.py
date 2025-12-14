@@ -1,4 +1,4 @@
-# Lencer
+
 
 # Define minimum input length for task titles/descriptions
 MIN_INPUT_LENGTH = 3
@@ -67,5 +67,6 @@ MENU_OPTIONS = [
         'aliases': ['e', 'exit']
     },
 ]
+
 
 
