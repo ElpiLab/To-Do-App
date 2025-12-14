@@ -92,7 +92,7 @@ def main():  # Elpidio
             print(" - The underlined letter (e.g., 'a')")
             print(" - The full word (e.g., 'add')")
 
-# Requirement 5 - Exit - Valentina
+
 def exit_app(tasks_list):
     """
     Handle application exit. Tasks are already auto-saved on add/complete/delete.
