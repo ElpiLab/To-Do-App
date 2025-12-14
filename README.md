@@ -53,8 +53,26 @@ The application interacts with the user through the console, accepting input and
 It provides clear prompts, menus, and feedback to create an engaging and easy-to-use experience.
 
 ### 2. Data Validation (Input Checking)
-The application validates all user input to ensure data integrity and a smooth user experience.  
-Invalid or missing data is handled gracefully with clear error messages.
+The application validates all user input to ensure data integrity and a smooth user experience. This is implemented in `task_add_view.py` and `task_complete_delete.py` as follows:
+
+- **Menu selection:** When adding a task, the program enforces a minimum length to prevent empty or meaningless entries:
+	```python
+	 while True:
+        title = input(f"Enter task title (min {config.MIN_INPUT_LENGTH} chars): ").strip()
+        if len(title) >= config.MIN_INPUT_LENGTH:
+            break
+        print(f"Title must be at least {config.MIN_INPUT_LENGTH} characters long.")
+	```
+	This ensures only valid menu items can be ordered.
+
+- **Menu file validation:** When reading the menu file, the program checks for valid price values and skips invalid lines:
+- **Task Integrity:** When adding a task, the program enforces a minimum length to prevent empty or meaningless entries:
+
+
+- **Operational Safety:** When deleting or completing tasks, the system uses try-except blocks to catch non-numeric inputs and range checks to prevent "IndexError" crashes
+ 
+
+This ensures that every task stored in the JSON file has valid content.
 
 ### 3. File Processing (Read / Write)
 The application can read data from and write data to files, allowing users to save and retrieve information.  
