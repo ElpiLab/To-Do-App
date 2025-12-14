@@ -160,7 +160,8 @@ This avoids invalid indexing on an empty list.
     # delete_task: deleted_task = tasks_list.pop(task_num-1); save_tasks_to_file(...)
   else:
     print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
-Prevents non-numeric input and out-of-range task selection before updating/deleting and saving.	```
+```
+Prevents non-numeric input and out-of-range task selection before updating/deleting and saving.	
 ---
 
 3- File processing(read/write) 
