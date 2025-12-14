@@ -65,29 +65,143 @@ The application is fully console-based. Users can:
 
     . Receive feedback messages after each operation (task added, updated, deleted, saved).
 
-This satisfies the requirement for an interactive console application
+This satisfies the requirement for an interactive console application.
 
 2- Data validation (input checking)
+The application validates all user input to ensure data integrity and a smooth user experience. This is implemented in `main.py`, `tasks_add_view.py`, and `tasks_complete_delete.py` as follows:
 
-The application validates all user input to ensure data integrity and a smooth user experience. This is implemented in task_add_view.py and task_complete_delete.py as follows:
+- **Menu Input:** User input is lowercased/stripped. It must match a menu key, an alias, or the underlined first letter of the label.
+  Otherwise, the app prints a targeted “Invalid choice” message.
+	```python
+	 choice = input("\nEnter your choice: ").lower().strip()
+  selected_function = next(
+    (
+        option.get('function')
+        for option in config.MENU_OPTIONS
+        if choice == option['key']
+        or choice in option['aliases']
+        or choice == option['label'][0].lower()
+    ),
+    None,
+  )
 
-Menu selection: When adding a task, the program enforces a minimum length to prevent empty or meaningless entries:
+  if not selected_function:
+    print(f"\n{config.BOLD}Invalid choice: '{choice}'{config.RESET_FORMATTING}")
+    print("Please enter one of the following:")
+    print(" - The number (e.g., '1')")
+    print(" - The underlined letter (e.g., 'a')")
+    print(" - The full word (e.g., 'add')")
+	```
+	This ensures only valid menu items can be executed.
+
+- **Function dispatch Safety:** only calls existing functions; otherwise reports a configuration error.
+	```python
+	def get_function(selected_function):
+    for module in (tasks_add_view, tasks_complete_delete):
+        if hasattr(module, selected_function):
+            return getattr(module, selected_function)
+    return globals().get(selected_function)
+	```
+
+- **Title description and length:** Enforce minimum length from config.MIN_INPUT_LENGTH.
+	```python
+	while True:
+    title = input(f"Enter task title (min {config.MIN_INPUT_LENGTH} chars): ").strip()
+    if len(title) >= config.MIN_INPUT_LENGTH:
+        break
+    print(f"Title must be at least {config.MIN_INPUT_LENGTH} characters long.")
 
   while True:
-     title = input(f"Enter task title (min {config.MIN_INPUT_LENGTH} chars): ").strip()
-     if len(title) >= config.MIN_INPUT_LENGTH:
-         break
-     print(f"Title must be at least {config.MIN_INPUT_LENGTH} characters long.")
+    description = input(f"Enter task description (min {config.MIN_INPUT_LENGTH} chars): ").strip()
+    if len(description) >= config.MIN_INPUT_LENGTH:
+        break
+    print(f"Description must be at least {config.MIN_INPUT_LENGTH} characters long.")
+	```
 
-This ensures only valid menu items can be ordered.
+These ensures 
 
-Menu file validation: When reading the menu file, the program checks for valid price values and skips invalid lines:
+---
 
-Task Integrity: When adding a task, the program enforces a minimum length to prevent empty or meaningless entries:
+- **Priority Selection:** Must match a key, alias, or first word of the label; otherwise, reprompts.
+	```python
+	priority = "Medium"  # default
+  while True:
+    p_choice = input("Choose a priority level: ").lower().strip()
+    found = False
+    for option in config.PRIORITY_OPTIONS:
+        if (p_choice == option['key']
+            or p_choice in option['aliases']
+            or p_choice == option['label'].split()[0].lower()):
+            priority = option['level']
+            found = True
+            break
+    if found:
+        break
+    print("Invalid priority. Please try again. Use the number, first letter or first word.")
+	```
+ 
+ - **Empty List guard:** aborts when there are no tasks to act on.
+	```python
+   if len(tasks_list) == 0:
+    print("No tasks to mark complete!")
+    return
+	```
+These checks prevent crashes and guide the user to provide correct input, matching the validation requirements described in the project guidelines.
 
-Operational Safety: When deleting or completing tasks, the system uses try-except blocks to catch non-numeric inputs and range checks to prevent "IndexError" crashes
+---
 
-This ensures that every task stored in the JSON file has valid content.
+- **Mark complete :** cancel, numeric input, range check
+	```python
+	user_input = input("Enter task number to mark complete (or 'c' to cancel): ").strip()
+  if user_input.lower() == 'c':
+    print("Operation cancelled.")
+    return
+
+  task_num = int(user_input)
+  if 1 <= task_num <= len(tasks_list):
+    tasks_list[task_num-1]["completed"] = True
+    save_tasks_to_file(tasks_list)
+  else:
+    print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
+  ...
+  except ValueError:
+    print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
+	```
+
+- **Delete:** The main menu checks for valid options and handles invalid choices gracefully:
+	```python
+  user_input = input("Enter task number to delete (or 'c' to cancel): ").strip()
+  if user_input.lower() == 'c':
+    print("Operation cancelled.")
+    return
+
+  task_num = int(user_input)
+  if 1 <= task_num <= len(tasks_list):
+    deleted_task = tasks_list.pop(task_num-1)
+    save_tasks_to_file(tasks_list)
+  else:
+    print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
+  ...
+  except ValueError:
+    print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
+  ```# filepath: /workspaces/To-Do-App/tasks_complete_delete.py
+  user_input = input("Enter task number to delete (or 'c' to cancel): ").strip()
+  if user_input.lower() == 'c':
+    print("Operation cancelled.")
+    return
+
+  task_num = int(user_input)
+  if 1 <= task_num <= len(tasks_list):
+    deleted_task = tasks_list.pop(task_num-1)
+    save_tasks_to_file(tasks_list)
+  else:
+    print(f"{config.BOLD}Invalid task number!{config.RESET_FORMATTING} Please enter a number between 1 and {len(tasks_list)}.")
+  ...
+  except ValueError:
+    print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
+	```
+ 
+---
 
 3- File processing(read/write) 
 The application persists tasks using a JSON file:
