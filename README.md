@@ -122,7 +122,7 @@ Task editing
 Time tracking
 
 Due dates & calendar
-
+ 
 ## Team
 Elpidio – Development & Documentation
 
