@@ -2,7 +2,7 @@ from file import save_tasks_to_file
 from tasks_add_view import view_tasks
 import config
 
-# Requirement 3 - Mark Complete - Lencer
+# Requirement 3 - Mark Complete
 def mark_complete(tasks_list):
     """
     Mark a selected task as complete.
@@ -38,7 +38,7 @@ def mark_complete(tasks_list):
         except ValueError:
             print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
 
-# Requirement 4 - Delete Task - Valentina
+# Requirement 4 - Delete Task 
 def delete_task(tasks_list):
     """
     Removes a selected task from the list.
@@ -74,5 +74,6 @@ def delete_task(tasks_list):
                 
         except ValueError:
             print(f"{config.BOLD}Invalid input!{config.RESET_FORMATTING} Please enter a valid number.")
+
 
 
