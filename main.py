@@ -17,7 +17,7 @@ def get_function(selected_function):
     return globals().get(selected_function)
 
 
-def main():  # Elpidio 
+def main():  
     """
     Main application entry point.
     Initializes the application, loads data, and runs the main event loop.
