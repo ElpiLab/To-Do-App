@@ -1,70 +1,72 @@
-# To-Do-App
+# To-Do App
 
-A console for managing tasks for students.
-Here is the Documentation of our To-Do App in the Programming Foundations class
+A console-based application for managing tasks for students.  
+This document presents the documentation of our To-Do App developed in the Programming Foundations class.
 
-Analysis:
+## Analysis
 
-Problem: As first-year BIT students, we face challenges juggling multiple modules, assignments, group projects, and personal study goals. This leads to constant brain overload and decision fatigue, which in turn leads to the following struggles:
+### Problem
+As first-year BIT students, we face challenges juggling multiple modules, assignments, group projects, and personal study goals. This often leads to mental overload and decision fatigue, resulting in:
 
-- Difficulty in prioritizing the urgency of assignments, leading to effort underestimation.
-- Poor Time Management caused by insufficient time allocation, leading to procrastination and last-minute stress
-- Low productivity and poor focus as tasks lack clear boundaries & priorities, which causes mental strain during studies.
+- Difficulty prioritizing tasks, leading to effort underestimation
+- Poor time management, causing procrastination and last-minute stress
+- Low productivity and reduced focus due to lack of structure
 
 ## Impact
 
-Lack of a centralized system to maximize productivity, especially in first-year students, often leads to:
+The lack of a centralized task management system often leads to:
 
 - Procrastination
 - Inefficient study time
-- last-minute stress
-- Sometimes missed deadlines with projects/assignments.
-- Poor Grades
+- Last-minute stress
+- Missed deadlines for assignments and projects
+- Lower academic performance
 
 ## Solution
 
-Our interactive To-Do-App with task organization provides an effective system and strategic ways to improve productivity by: 
-- Reducing stress through clear visualization of progress and centralized priority system
+Our interactive console-based To-Do App provides a simple and effective way to manage tasks by:
 
-
+- Reducing stress through clear visualization of tasks
+- Offering a centralized system based on task priorities
 
 ## Scenario
 
-Based on our modules, we have different requirements, teams, and group projects. The idea is to put all tasks and deadlines in  the console application to get notifications and reminders for task management and completion.
+Students manage different modules, teams, and group projects at the same time.  
+The idea is to store all tasks in one console application so users can organize and manage their workload in a clear and structured way.
 
-## Requirements/User stories
+## Requirements / User Stories
 
-- As a user, I want to add a new task with a title, description, and priority so that I have all my To Do Tasks centralized and easily organized
-- As a user, I want to see the "view my tasks" on the console, so that I can immediately get an overview of the workload I have
-- As a user, I want to mark a task as complete, so that I can visually track my progress and maintain motivation
-- As a user, I want to delete old/redundant tasks, so that my task list remains clean and focused only on actionable items.
+- As a user, I want to add a new task with a title, description, and priority so that all my tasks are centralized and organized.
+- As a user, I want to view my tasks in the console so that I can easily see my current workload.
+- As a user, I want to delete tasks that are no longer needed so that my task list stays clean and focused.
 
+## Use Cases
 
-### Use cases
+- Show Menu: Display available actions in the console (Add Task, View Tasks, Delete Task, Exit).
+- Create Tasks: Allow users to enter task details such as title, description, and priority level.
+- Show Current Tasks: Display all tasks with clear information about priority and status.
+- Delete Tasks: Allow users to permanently remove completed or unwanted tasks from the list.
 
-- Show Menu: Display list of actions in the console: Add Task, View Tasks, Mark as Done, Delete, Exit
-- Create/Edit Tasks - Allow entry of tasks with details: title, description, priority level.
-- Show Current Tasks: Display all tasks with clear status, priority, description.
-- Delete tasks - allow user to permanently remove completed or unwanted tasks from list
+## Technical Features
 
-1- Interactive App (console input)
-The application interacts with the user through the console, accepting input and displaying responses in real time. It should provide clear prompts, menus, and feedback to create an engaging and easy-to-use experience.
+### 1. Interactive Console Application
+The application interacts with the user through console input and provides clear prompts, menus, and feedback.
 
-2- Data validation (input checking)
-The application validates all user input to ensure data integrity and a smooth user experience. Invalid or missing data should be handled gracefully, with clear error messages and opportunities for correction.
+### 2. Data Validation
+User input is validated to ensure data integrity. Invalid input is handled with clear error messages.
 
-3- File processing(read/write)
-The application can read data from and write data to files, allowing users to save and retrieve information. Proper file handling ensures that data is stored securely and can be accessed or updated when needed.
+### 3. File Processing (Read/Write)
+Tasks are saved to and loaded from a file, allowing data to persist between sessions.
 
+## Future Roadmap (Missing Features)
 
+- Pomodoro
+- Task editing
+- Time tracking
+- Due dates & calendar
 
-### Future Roadmap ( for missing features)
--Pomodoro
--Task editing
--Time Tracking
--Due dates & calender
+## Team Contributions
 
- Team:
- Elpidio:
- Lencer:
- Valentina:
+- Elpidio – Development,Documentation
+- Lencer – Development, Refactoring & Documentation
+- Valentina – Development,Refactoring, Branding, Presentation & Documentation.
