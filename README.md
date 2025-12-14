@@ -35,58 +35,35 @@ The idea is to put all tasks in the console application to manage and organize t
 
 ## Requirements / User Stories
 
-- As a user, I want to add a new task with a title, description, and priority so that I have all my To-Do tasks centralized and easily organized.
-- As a user, I want to see my tasks in the console so that I can immediately get an overview of my workload.
-- As a user, I want to delete old or redundant tasks so that my task list remains clean and focused only on actionable items.
+-As a user, I want to add a new task with a title, description, and priority so that I have all my To Do Tasks centralized and easily organized
+- As a user, I want to see the "view my tasks" on the console, so that I can immediately get an overview of the workload I have
+- As a user, I want to mark a task as complete, so that I can visually track my progress and maintain motivation
+- As a user, I want to track time and see the time invested(in minutes/hours) for each task/project, so that I can accurately estimate time for future projects and improve my planning.
+- As a user, I want to categorize based on topics, priority, due date, and color-code, so that I can constantly manage my time during stressful periods
+- As a user, I want to delete old/redundant tasks, so that my task list remains clean and focused only on actionable items.
+- As a user, I want to start and end a session using Pomodoro, e.g,  (25 min work/5 min break), so that I can maintain deep focus and prevent burning out during long study sessions.
+- As a user, I want to see the weekly, monthly, and yearly calendars
 
-## Use Cases
+### Use cases: 
+  - Show Menu: Display list of actions in the console: Add Task, View Tasks, Mark as Done, Delete, Exit
+  - Create/Edit Tasks - Allow new entry or modification of tasks with details: title, description, due date, priority.
+  - Show Current Tasks: Display all tasks with clear status, priority, description, and time spent based on Pomodoro Info 
+  - Edit or delete Tasks- Allow the user to modify an existing task's title, description, priority, or permanently delete it from the list.
+  - Tracking Tasks: Display statistical reports on productivity, e.g, completion time, time spent on all tasks, or each task.
+  - Pomodoro Session: Implement a precise timer function to start, pause, or reset structured work/break cycles (e.g, 25 minutes study, 5 minutes break) to improve focus.(long term)
 
-- Show Menu: Display list of actions in the console: Add Task, View Tasks, Delete Task, Exit.
-- Create Tasks: Allow entry of tasks with details such as title, description, and priority level.
-- Show Current Tasks: Display all tasks with clear priority and status.
-- Delete Tasks: Allow the user to permanently remove unwanted or completed tasks from the list.
-
-## Technical Features
-
-### 1. Interactive App (Console Input)
-The application interacts with the user through the console, accepting input and displaying responses in real time.  
-It provides clear prompts, menus, and feedback to create an engaging and easy-to-use experience.
-
-### 2. Data Validation (Input Checking)
-The application validates all user input to ensure data integrity and a smooth user experience. This is implemented in `task_add_view.py` and `task_complete_delete.py` as follows:
-
-- **Menu selection:** When adding a task, the program enforces a minimum length to prevent empty or meaningless entries:
-	```python
-	 while True:
-        title = input(f"Enter task title (min {config.MIN_INPUT_LENGTH} chars): ").strip()
-        if len(title) >= config.MIN_INPUT_LENGTH:
-            break
-        print(f"Title must be at least {config.MIN_INPUT_LENGTH} characters long.")
-	```
-	This ensures only valid menu items can be ordered.
-
-- **Menu file validation:** When reading the menu file, the program checks for valid price values and skips invalid lines:
-- **Task Integrity:** When adding a task, the program enforces a minimum length to prevent empty or meaningless entries:
-
-
-- **Operational Safety:** When deleting or completing tasks, the system uses try-except blocks to catch non-numeric inputs and range checks to prevent "IndexError" crashes
  
 
-This ensures that every task stored in the JSON file has valid content.
+1- Interactive App (console input)
+The application interacts with the user through the console, accepting input and displaying responses in real time. It should provide clear prompts, menus, and feedback to create an engaging and easy-to-use experience
 
-### 3. File Processing (Read / Write)
-The application can read data from and write data to files, allowing users to save and retrieve information.  
-This ensures that data is stored securely and can be accessed or updated when needed.
+2- Data validation (input checking)
+The application validates all user input to ensure data integrity and a smooth user experience. Invalid or missing data should be handled gracefully, with clear error messages and opportunities for correction
 
-## Future Roadmap (Missing Features)
+3- File processing(read/write) 
+The application can read data from and write data to files, allowing users to save and retrieve information. Proper file handling ensures that data is stored securely and can be accessed or updated when needed
 
-- Pomodoro
-- Task editing
-- Time tracking
-- Due dates & calendar
-
-- ## Team
-
-- Elpidio – Development & Documentation  
-- Lencer – Development, Refactoring & Documentation  
-- Valentina – Development, Refactoring, Branding, Presentation & Documentation  
+ Team:
+ Elpidio:   
+ Lencer:
+ Valentina:
