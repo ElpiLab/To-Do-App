@@ -25,7 +25,7 @@ Lack of a centralized system to maximize productivity, especially in first-year 
 
 Our interactive To-Do-App with task organization provides an effective system and strategic ways to improve productivity by: 
 - Reducing stress through clear visualization of progress and centralized priority system
--Improved Grades through timely assignment/project submission and better quality work as a result of a better structured time allocation.
+
 
 
 ## Scenario
