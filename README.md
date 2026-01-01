@@ -93,7 +93,7 @@ The application validates all user input to ensure data integrity and a smooth u
             return getattr(module, selected_function)
     return globals().get(selected_function)
 	```
- Ensures only functions that actually exist in the action modules/globals are invoked; missing/typo’d config entries are caught as configuration errors instead of crashing.
+Ensures only functions that actually exist in the action modules/globals are invoked; missing/typo’d config entries are caught as configuration errors instead of crashing.
  
 - **Title description and length:** Enforce minimum length from config.MIN_INPUT_LENGTH.
 	```python
